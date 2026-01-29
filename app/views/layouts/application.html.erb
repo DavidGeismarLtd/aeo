@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full bg-gray-50">
   <head>
-    <title><%= content_for(:title) || "Aeo" %></title>
+    <title><%= content_for(:title) || "AEO - Workspace Management" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Aeo">
+    <meta name="application-name" content="AEO">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -23,10 +23,31 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <div class="container mx-auto px-4">
-      <%= render "shared/flash_messages" %>
-      <%= yield %>
-    </div>
+  <body class="h-full">
+    <% if user_signed_in? %>
+      <div class="min-h-full">
+        <%= render "shared/navbar" %>
+
+        <div class="flex h-[calc(100vh-4rem)]">
+          <%= render "shared/sidebar" %>
+
+          <main class="flex-1 overflow-y-auto bg-gray-50">
+            <%= render "shared/flash_messages" %>
+
+            <div class="py-6">
+              <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <%= yield %>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    <% else %>
+      <!-- Public/Auth Pages Layout -->
+      <div class="min-h-full bg-gray-50">
+        <%= render "shared/flash_messages" %>
+        <%= yield %>
+      </div>
+    <% end %>
   </body>
 </html>

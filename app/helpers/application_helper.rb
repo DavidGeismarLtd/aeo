@@ -1,4 +1,10 @@
 module ApplicationHelper
+  # Returns the current workspace for the signed-in user
+  # Uses ActsAsTenant.current_tenant which is set in ApplicationController
+  def current_workspace
+    ActsAsTenant.current_tenant
+  end
+
   def flash_class(level)
     case level.to_sym
     when :notice then "bg-blue-100 border-blue-400 text-blue-700"
@@ -7,6 +13,10 @@ module ApplicationHelper
     when :alert then "bg-yellow-100 border-yellow-400 text-yellow-700"
     else "bg-gray-100 border-gray-400 text-gray-700"
     end
+  end
+
+  def active_link_class(path)
+    current_page?(path) ? "bg-indigo-50 text-indigo-600" : "text-gray-700 hover:bg-gray-50"
   end
 
   def user_avatar(user, size: "md")
