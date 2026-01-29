@@ -92,12 +92,9 @@ GEM
     bindex (0.8.1)
     bootsnap (1.21.1)
       msgpack (~> 1.2)
-    brakeman (7.1.2)
+    brakeman (8.0.0)
       racc
     builder (3.3.0)
-    bullet (7.2.0)
-      activesupport (>= 3.0.0)
-      uniform_notifier (~> 1.11)
     bundler-audit (0.9.3)
       bundler (>= 1.2.0)
       thor (~> 1.0)
@@ -462,7 +459,6 @@ GEM
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.2.0)
-    uniform_notifier (1.18.0)
     uri (1.1.1)
     useragent (0.16.11)
     vcr (6.4.0)
@@ -503,7 +499,6 @@ DEPENDENCIES
   annotate
   bootsnap
   brakeman
-  bullet (~> 7.1)
   bundler-audit
   capybara
   database_cleaner-active_record (~> 2.2)
