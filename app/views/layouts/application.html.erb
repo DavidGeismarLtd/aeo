@@ -24,8 +24,9 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <div class="container mx-auto px-4">
+      <%= render "shared/flash_messages" %>
       <%= yield %>
-    </main>
+    </div>
   </body>
 </html>
