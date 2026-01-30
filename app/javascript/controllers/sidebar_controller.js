@@ -15,16 +15,30 @@ export default class extends Controller {
   }
 
   open() {
-    this.sidebarTarget.classList.remove("hidden")
-    this.sidebarTarget.classList.add("fixed", "inset-0", "z-40", "lg:static", "lg:z-auto")
-
-    // Add backdrop
+    // Add backdrop first
     this.createBackdrop()
+
+    // Remove hidden and add positioning classes
+    this.sidebarTarget.classList.remove("hidden", "-translate-x-full")
+    this.sidebarTarget.classList.add("fixed", "inset-y-0", "left-0", "z-40", "translate-x-0")
+
+    // Force reflow to ensure transition happens
+    this.sidebarTarget.offsetHeight
   }
 
   close() {
-    this.sidebarTarget.classList.add("hidden")
+    // Slide out with animation
+    this.sidebarTarget.classList.remove("translate-x-0")
+    this.sidebarTarget.classList.add("-translate-x-full")
+
+    // Remove backdrop
     this.removeBackdrop()
+
+    // Hide after animation completes (300ms)
+    setTimeout(() => {
+      this.sidebarTarget.classList.add("hidden")
+      this.sidebarTarget.classList.remove("fixed", "inset-y-0", "left-0", "z-40")
+    }, 300)
   }
 
   createBackdrop() {
@@ -42,4 +56,3 @@ export default class extends Controller {
     }
   }
 }
-
