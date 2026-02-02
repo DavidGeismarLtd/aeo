@@ -35,6 +35,14 @@ class ApplicationController < ActionController::Base
       # Restore from session if no slug in URL
       workspace = current_user.workspaces.find_by(id: session[:current_workspace_id])
       ActsAsTenant.current_tenant = workspace if workspace
+    else
+      # If no workspace is set, use the user's first workspace as default
+      # This ensures the workspace switcher is visible on first login
+      workspace = current_user.workspaces.first
+      if workspace
+        ActsAsTenant.current_tenant = workspace
+        session[:current_workspace_id] = workspace.id
+      end
     end
 
   rescue ActiveRecord::RecordNotFound
