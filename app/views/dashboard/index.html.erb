@@ -1,14 +1,54 @@
-<div class="min-h-screen bg-gray-50 py-8">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="mb-8">
-      <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
-      <p class="mt-2 text-gray-600">Welcome back, <%= current_user.full_name %>!</p>
+<div class="min-h-screen bg-gray-50">
+  <!-- Page Header -->
+  <div class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="md:flex md:items-center md:justify-between">
+        <div class="flex-1 min-w-0">
+          <h1 class="text-3xl font-bold text-gray-900">
+            <%= current_workspace.name %> Dashboard
+          </h1>
+          <p class="mt-1 text-sm text-gray-500">
+            Welcome back! Here's what's happening with your brands.
+          </p>
+        </div>
+        <div class="mt-4 flex md:mt-0 md:ml-4 space-x-3">
+          <%= link_to workspace_brands_path(current_workspace),
+              class: "inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-150" do %>
+            <svg class="-ml-1 mr-2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+              <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+            </svg>
+            View All Brands
+          <% end %>
+          <%= link_to new_workspace_brand_path(current_workspace),
+              class: "inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-150" do %>
+            <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+            </svg>
+            Add Brand
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Statistics Cards -->
+    <%= render "statistics_cards", stats: @stats %>
+
+    <!-- Brand List or Empty State -->
+    <div class="mt-8">
+      <% if @brands.any? %>
+        <%= render "brand_list", brands: @brands %>
+      <% else %>
+        <%= render "empty_state" %>
+      <% end %>
     </div>
 
-    <div class="bg-white shadow rounded-lg p-6">
-      <p class="text-gray-700">Your dashboard content will go here.</p>
-      <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }, class: "mt-4 inline-block px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700" %>
+    <!-- Charts Section (Placeholder) -->
+    <div class="mt-8">
+      <%= render "charts_placeholder" %>
     </div>
   </div>
 </div>
-

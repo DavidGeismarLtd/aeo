@@ -1,0 +1,162 @@
+<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+  <!-- Total Brands Card -->
+  <div class="bg-white overflow-hidden shadow rounded-lg hover:shadow-md transition-shadow duration-150">
+    <div class="p-5">
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <div class="flex items-center justify-center h-12 w-12 rounded-md bg-gradient-to-br from-indigo-500 to-indigo-600 text-white shadow-sm">
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          </div>
+        </div>
+        <div class="ml-5 w-0 flex-1">
+          <dl>
+            <dt class="text-sm font-medium text-gray-500 truncate">
+              Total Brands
+            </dt>
+            <dd class="flex items-baseline">
+              <div class="text-2xl font-semibold text-gray-900">
+                <%= stats[:total_brands] %>
+              </div>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="bg-gray-50 px-5 py-3">
+      <div class="text-sm">
+        <%= link_to workspace_brands_path(current_workspace), class: "font-medium text-indigo-600 hover:text-indigo-500 transition-colors duration-150" do %>
+          View all brands
+          <span aria-hidden="true"> &rarr;</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Total Mentions Card -->
+  <div class="bg-white overflow-hidden shadow rounded-lg hover:shadow-md transition-shadow duration-150">
+    <div class="p-5">
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <div class="flex items-center justify-center h-12 w-12 rounded-md bg-gradient-to-br from-green-500 to-green-600 text-white shadow-sm">
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+            </svg>
+          </div>
+        </div>
+        <div class="ml-5 w-0 flex-1">
+          <dl>
+            <dt class="text-sm font-medium text-gray-500 truncate">
+              Total Mentions
+            </dt>
+            <dd class="flex items-baseline">
+              <div class="text-2xl font-semibold text-gray-900">
+                <%= number_with_delimiter(stats[:total_mentions]) %>
+              </div>
+              <div class="ml-2 flex items-baseline text-sm font-semibold text-gray-500">
+                Last 30 days
+              </div>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="bg-gray-50 px-5 py-3">
+      <div class="text-sm">
+        <span class="font-medium text-gray-700">
+          <%= stats[:mentions_this_week] %> this week
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Average Visibility Score Card -->
+  <div class="bg-white overflow-hidden shadow rounded-lg hover:shadow-md transition-shadow duration-150">
+    <div class="p-5">
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <div class="flex items-center justify-center h-12 w-12 rounded-md bg-gradient-to-br from-yellow-500 to-yellow-600 text-white shadow-sm">
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+        </div>
+        <div class="ml-5 w-0 flex-1">
+          <dl>
+            <dt class="text-sm font-medium text-gray-500 truncate">
+              Avg Visibility Score
+            </dt>
+            <dd class="flex items-baseline">
+              <div class="text-2xl font-semibold text-gray-900">
+                <%= stats[:avg_visibility_score].round(1) %>
+              </div>
+              <div class="ml-2 flex items-baseline text-sm font-semibold">
+                <% if stats[:avg_visibility_score] >= 70 %>
+                  <span class="text-green-600">Excellent</span>
+                <% elsif stats[:avg_visibility_score] >= 50 %>
+                  <span class="text-yellow-600">Good</span>
+                <% elsif stats[:avg_visibility_score] > 0 %>
+                  <span class="text-red-600">Needs Work</span>
+                <% else %>
+                  <span class="text-gray-400">No data</span>
+                <% end %>
+              </div>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="bg-gray-50 px-5 py-3">
+      <div class="text-sm">
+        <span class="font-medium text-gray-700">
+          Today's average
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Activity Card -->
+  <div class="bg-white overflow-hidden shadow rounded-lg hover:shadow-md transition-shadow duration-150">
+    <div class="p-5">
+      <div class="flex items-center">
+        <div class="flex-shrink-0">
+          <div class="flex items-center justify-center h-12 w-12 rounded-md bg-gradient-to-br from-purple-500 to-purple-600 text-white shadow-sm">
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+        </div>
+        <div class="ml-5 w-0 flex-1">
+          <dl>
+            <dt class="text-sm font-medium text-gray-500 truncate">
+              Recent Activity
+            </dt>
+            <dd class="flex items-baseline">
+              <div class="text-2xl font-semibold text-gray-900">
+                <%= stats[:recent_activity] %>
+              </div>
+              <div class="ml-2 flex items-baseline text-sm font-semibold text-gray-500">
+                Last 24h
+              </div>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="bg-gray-50 px-5 py-3">
+      <div class="text-sm">
+        <% if stats[:top_brand] %>
+          <span class="font-medium text-gray-700">
+            Top: <%= stats[:top_brand].name %>
+          </span>
+        <% else %>
+          <span class="font-medium text-gray-500">
+            No data yet
+          </span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
