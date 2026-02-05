@@ -95,9 +95,6 @@ GEM
     brakeman (7.1.2)
       racc
     builder (3.3.0)
-    bullet (7.2.0)
-      activesupport (>= 3.0.0)
-      uniform_notifier (~> 1.11)
     bundler-audit (0.9.3)
       bundler (>= 1.2.0)
       thor (~> 1.0)
@@ -447,11 +444,11 @@ GEM
     tailwindcss-ruby (4.1.18-x86_64-linux-gnu)
     tailwindcss-ruby (4.1.18-x86_64-linux-musl)
     thor (1.5.0)
-    thruster (0.1.17)
-    thruster (0.1.17-aarch64-linux)
-    thruster (0.1.17-arm64-darwin)
-    thruster (0.1.17-x86_64-darwin)
-    thruster (0.1.17-x86_64-linux)
+    thruster (0.1.18)
+    thruster (0.1.18-aarch64-linux)
+    thruster (0.1.18-arm64-darwin)
+    thruster (0.1.18-x86_64-darwin)
+    thruster (0.1.18-x86_64-linux)
     timeout (0.6.0)
     tsort (0.2.0)
     turbo-rails (2.0.21)
@@ -462,7 +459,6 @@ GEM
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.2.0)
-    uniform_notifier (1.18.0)
     uri (1.1.1)
     useragent (0.16.11)
     vcr (6.4.0)
@@ -503,7 +499,6 @@ DEPENDENCIES
   annotate
   bootsnap
   brakeman
-  bullet (~> 7.1)
   bundler-audit
   capybara
   database_cleaner-active_record (~> 2.2)
