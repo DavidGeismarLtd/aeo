@@ -71,6 +71,12 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   # Include Devise test helpers
+  config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::IntegrationHelpers, type: :request
-end
 
+  # Include Warden test helpers for system specs
+  config.include Warden::Test::Helpers, type: :system
+  config.after(type: :system) do
+    Warden.test_reset!
+  end
+end

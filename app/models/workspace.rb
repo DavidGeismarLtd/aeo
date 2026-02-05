@@ -27,6 +27,11 @@ class Workspace < ApplicationRecord
 
   # Instance Methods
 
+  # Override to_param to use slug instead of ID in URLs
+  def to_param
+    slug
+  end
+
   # Get the owner of this workspace
   def owner
     workspace_memberships.find_by(role: "owner")&.user
