@@ -101,4 +101,3 @@ RSpec.describe DashboardHelper, type: :helper do
     end
   end
 end
-

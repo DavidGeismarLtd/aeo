@@ -35,4 +35,3 @@ end
 puts "\n"
 
 puts "✅ All PostgreSQL extensions are working correctly!"
-

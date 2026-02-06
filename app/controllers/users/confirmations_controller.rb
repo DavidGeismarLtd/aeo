@@ -12,4 +12,3 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
     new_user_session_path
   end
 end
-

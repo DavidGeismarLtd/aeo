@@ -5,4 +5,3 @@
 class Users::PasswordsController < Devise::PasswordsController
   # Override to add custom behavior if needed
 end
-

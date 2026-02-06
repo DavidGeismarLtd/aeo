@@ -71,4 +71,3 @@ module DashboardHelper
     end
   end
 end
-
