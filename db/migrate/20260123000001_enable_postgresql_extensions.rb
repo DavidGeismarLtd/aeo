@@ -34,4 +34,3 @@ class EnablePostgresqlExtensions < ActiveRecord::Migration[8.1]
     disable_extension "pgcrypto" if extension_enabled?("pgcrypto")
   end
 end
-

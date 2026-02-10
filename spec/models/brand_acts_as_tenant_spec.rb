@@ -144,4 +144,3 @@ RSpec.describe Brand, type: :model do
     end
   end
 end
-

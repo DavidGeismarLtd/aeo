@@ -10,4 +10,3 @@ ActsAsTenant.configure do |config|
   # Specify the primary key column name
   config.pkey = :id
 end
-

@@ -10,14 +10,14 @@ Rails.application.routes.draw do
   # Authenticated routes
   authenticated :user do
     # Workspace management
-    resources :workspaces, only: [:index, :new, :create, :show, :edit, :update]
+    resources :workspaces, only: [ :index, :new, :create, :show, :edit, :update ]
 
     # Workspace-scoped routes
-    scope ':workspace_slug', as: :workspace do
-      get '/', to: 'dashboard#index', as: :dashboard
+    scope ":workspace_slug", as: :workspace do
+      get "/", to: "dashboard#index", as: :dashboard
       resources :brands
-      resources :settings, only: [:index, :update]
-      resources :team_members, only: [:index, :create, :destroy]
+      resources :settings, only: [ :index, :update ]
+      resources :team_members, only: [ :index, :create, :destroy ]
     end
 
     # Authenticated root redirects to dashboard
