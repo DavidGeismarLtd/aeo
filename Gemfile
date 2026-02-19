@@ -27,7 +27,7 @@ gem "acts_as_tenant", "~> 1.0"
 
 # Background Jobs
 gem "redis", "~> 5.0"
-gem "sidekiq", "~> 7.1"
+gem "sidekiq", "~> 8.1"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
